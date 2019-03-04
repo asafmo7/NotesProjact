@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Notes</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="headdiv"></div>
+    <div id="myForm">
+    <input id="info" type="text" required>
+    <input id="date" type="date" required>
+    <input id="time" type="time">
+    <button onclick="Add()">Add</button>
+    <button onclick="clearForm()">Clear</button>
+    </div>
+    <p id="panel"></p>
+    <script>
+        window.onload = init;
+        function init() {
+            openNotes()
+        }
+        var notes = [];
+    
+
+        function Add() {
+            //note element
+            var note = document.createElement('div');
+            note.style.height = "200px";
+            note.style.width = "200px";
+            note.classList = "notewrap";
+            // delete option
+            var delNote = document.createElement("span");
+            delNote.classList = "delnote"
+            delNote.style.position = "absolute";
+            delNote.style.top = "20px";
+            delNote.style.left = "10px";
+            delNote.innerHTML = `<span id="delbtn" onclick="deleteNote()" title="Delete Note" >X</span>`;
+            note.appendChild(delNote);
+            //notecontent
+            var info = document.getElementById('info');
+            note.append(info.value)
+            var date = document.getElementById('date');
+            note.append(date.value)
+            var time = document.getElementById('time');
+            note.append(time.value)
+            //display
+            var panel = document.querySelector("#panel");
+            panel.appendChild(note)
+            notes.push(note);
+            console.log(notes);
+            saveToLocal(notes);
+        }
+        function clearForm() {
+            var info = document.getElementById('info');
+            info.value = "";
+            var date = document.getElementById('date');
+            date.value = "";
+            var time = document.getElementById('time');
+            time.value = "";
+        }
+        function deleteNote() {
+            var btndel = document.getElementById('delbtn').parentElement.parentElement.remove();
+            delFromLocal()
+        }
+        function saveToLocal() {
+            var noteArr = notes;
+            console.log(noteArr);
+           localStorage.setItem('notes', JSON.stringify(noteArr) );
+            var get =  JSON.parse(localStorage.getItem('notes')) ;
+            console.log(get);
+
+        }
+        function delFromLocal() { console.log("data removed") }
+        function openNotes() { }
+
+
+    </script>
+
+</body>
+
+</html>

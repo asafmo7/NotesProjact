@@ -1,0 +1,54 @@
+body{
+    background-color: #C3B27F
+}
+.notewrap{
+    background-image: url("notebg.png");
+    position: relative;
+    
+    
+    
+
+
+}
+#panel{
+    flex-wrap: wrap;
+    flex-direction: ltr;
+    width: 100%;
+    display:flex;
+    flex:auto;
+
+}
+.notewrap span{
+    visibility: hidden;
+}
+:hover.notewrap span{
+    visibility: visible;
+    cursor: pointer;
+}
+#headdiv{
+    background-image: url("title.png");
+    height: 50px;
+    background-repeat: no-repeat;
+    margin: auto;
+    width: 50%;
+    
+}
+#myForm{
+    background-image: url("notelinebg.jpg");
+    height: 250px;
+    width: 100%;
+    padding-right: 125px ;
+    background-repeat: no-repeat;
+    align-items: center;
+    align-content: center;
+    display:flex;
+    flex-wrap: wrap;
+    flex:auto;
+    margin: auto;
+    width: 50%;
+}
+#info{
+  
+   
+   
+}
